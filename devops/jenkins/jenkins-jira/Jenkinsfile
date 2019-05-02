@@ -15,5 +15,6 @@ pipeline{
 }
 
 void comment(jiraKey, commentBody) {
+  def comment = [ body : commentBody ]
   jiraAddComment idOrKey: jiraKey, comment: commentBody
 }
