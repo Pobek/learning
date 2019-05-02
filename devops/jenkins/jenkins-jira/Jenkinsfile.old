@@ -1,0 +1,10 @@
+#!/groovy
+
+node {
+  stage('JIRA') {
+    withEnv(['JIRA_SITE=Jira-Evya']) {
+      def comment = [ body: 'test comment' ]
+      jiraAddComment idOrKey: 'JEN-1', input: comment
+    }
+  }
+}

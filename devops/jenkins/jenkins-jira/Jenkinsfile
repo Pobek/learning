@@ -1,10 +1,15 @@
 #!/groovy
 
-node {
-  stage('JIRA') {
-    withEnv(['JIRA_SITE=Jira-Evya']) {
-      def comment = [ body: 'test comment' ]
-      jiraAddComment idOrKey: 'JEN-1', input: comment
+pipeline{
+  stages{
+    stage('Jira'){
+      steps{
+        comment("JEN-1", "My comment")
+      }
     }
   }
+}
+
+void comment(jiraKey, commentBody) {
+  jiraAddComment idOrKey: jiraKey, comment: commentBody
 }
