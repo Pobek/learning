@@ -27,9 +27,9 @@ pipeline{
         success{
           comment("JEN-1", "Test Successfull! For results: ${env.BUILD_URL}")
         }
-        failure{
-          comment("JEN-1", "Test Failed! For results: ${env.BUILD_URL}")
-        }
+        //failure{
+        //  comment("JEN-1", "Test Failed! For results: ${env.BUILD_URL}")
+        //}
       }
     }
   }
