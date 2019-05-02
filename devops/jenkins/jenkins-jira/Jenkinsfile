@@ -1,6 +1,9 @@
 #!/groovy
 
 pipeline{
+  environment{
+    JIRA_SITE="Jira-Evya"
+  }
   agent any
   stages{
     stage('Jira'){
