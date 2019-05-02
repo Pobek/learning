@@ -6,6 +6,11 @@ pipeline{
   }
   agent any
   stages{
+    stage('Printenv'){
+      steps{
+        sh 'printenv'
+      }
+    }
     stage('Test'){
       agent{
         docker{ 
@@ -13,9 +18,12 @@ pipeline{
         }
       }
       steps{
-        sh 'py.test -v --junit-xml test-reports/results.xml test.py'
+        sh 'py.test -v --junit-xml test-reports/results.xml devops/jenkins/jenkins-jira/test.py'
       }
       post{
+        always{
+          junit test-reports/results.xml
+        }
         success{
           comment("JEN-1", "Test Successfull! For results: ${env.absoluteUrl}")
         }
