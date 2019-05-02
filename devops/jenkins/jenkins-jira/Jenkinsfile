@@ -6,9 +6,22 @@ pipeline{
   }
   agent any
   stages{
-    stage('Jira'){
+    stage('Test'){
+      agent{
+        docker{ 
+          image 'qnib/pytest'
+        }
+      }
       steps{
-        comment("JEN-1", "Build : ${env.BUILD_ID}")
+        sh 'py.test -v --junit-xml test-reports/results.xml test.py'
+      }
+      post{
+        success{
+          comment("JEN-1", "Test Successfull! For results: ${env.absoluteUrl}")
+        }
+        failure{
+          comment("JEN-1", "Test Failed! For results: ${env.absoluteUrl}")
+        }
       }
     }
   }
