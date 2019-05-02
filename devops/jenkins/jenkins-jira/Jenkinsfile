@@ -8,7 +8,7 @@ pipeline{
   stages{
     stage('Jira'){
       steps{
-        comment("JEN-1", "Build : $(env.BUILD_ID)")
+        comment("JEN-1", "Build : ${env.BUILD_ID}")
       }
     }
   }
