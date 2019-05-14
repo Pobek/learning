@@ -3,6 +3,8 @@
 pipeline{
   environment{
     JIRA_SITE="Jira-Evya"
+    buildURL = env.BUILD_URL
+    newBuildURL = buildURL.replace("job/${env.JOB_NAME}", "blue/organizations/jenkins/${env.JOB_NAME}/detail/${env.JOB_NAME}")
   }
   agent any
   stages{
@@ -25,7 +27,7 @@ pipeline{
         //  junit test-reports/results.xml
         //}
         success{
-          comment("JEN-1", "Test Successfull! For results: ${env.BUILD_URL}")
+          comment("JEN-1", "Test Successfull! For results: $newBuildURL")
         }
         //failure{
         //  comment("JEN-1", "Test Failed! For results: ${env.BUILD_URL}")
