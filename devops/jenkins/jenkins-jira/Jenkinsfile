@@ -3,8 +3,8 @@
 pipeline{
   environment{
     JIRA_SITE="Jira-Evya"
-    buildURL = env.BUILD_URL
-    newBuildURL = buildURL.replace("job/${env.JOB_NAME}", "blue/organizations/jenkins/${env.JOB_NAME}/detail/${env.JOB_NAME}")
+    buildURL = ${env.BUILD_URL}
+    newBuildURL = $buildURL.replace("job/${env.JOB_NAME}", "blue/organizations/jenkins/${env.JOB_NAME}/detail/${env.JOB_NAME}")
   }
   agent any
   stages{
