@@ -21,9 +21,9 @@ pipeline{
         sh 'py.test -v --junit-xml test-reports/results.xml devops/jenkins/jenkins-jira/test.py'
       }
       post{
-        always{
-          junit test-reports/results.xml
-        }
+        //always{
+        //  junit test-reports/results.xml
+        //}
         success{
           comment("JEN-1", "Test Successfull! For results: ${env.BUILD_URL}")
         }
