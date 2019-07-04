@@ -1,3 +1,5 @@
+#!/bin/toml
+
 logLevel = "INFO"
 defaultEntryPoints = ["http"]
 [entryPoints]
