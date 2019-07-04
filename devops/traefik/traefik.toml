@@ -1,0 +1,25 @@
+logLevel = "INFO"
+defaultEntryPoints = ["http"]
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+  [entryPoints.api]
+  address = ":8080"
+  [entryPoints.api.auth.basic]
+  users = ["admin:$apr1$h2Ad9IJo$/hSumjTs/xIZ82Vji2UHS1"]
+
+[api]
+  entryPoint = "api"
+  dashboard = true
+
+[docker]
+  endpoint = "unix:///var/run/docker.sock"
+  domain = "docker.localhost"
+  watch = true
+  exposedByDefault = false
+
+[accessLog]
+
+[ping]
+  entryPoint = "api"
