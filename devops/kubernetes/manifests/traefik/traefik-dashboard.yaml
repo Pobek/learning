@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: traefik-dashboard
+spec:
+  selector:
+    k8s-app: traefik-ingress
+  ports:
+  - port: 8080
+    name: dashboard
